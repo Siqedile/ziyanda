@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    </link>
+</head>
+
+<body>
+    <title>HTML dynamic table using JavaScript</title>
+    <script type="text/javascript" src="project.js"></script>
+</head>
+<body onload="load()">
+<div id="myform">
+
+    <b>Student Data</b>
+
+
+
+
+<table>
+   
+    <tr>
+        <td>Name:</td>
+        <td><input type="text" id="name"></td>
+        <button onclick="addName()">Add Name</button>
+    <table id="nameData">
+    </tr>
+    <tr>
+        <td>Age:</td>
+        <td><input type="text" id="age>
+        <input type="button" id="add" value="" onclick="Addage:addRow()"></td>
+        <button onclick="addAge()">Add Age</button>
+        <table id="ageData">
+    </tr>
+    <tr>
+        <td>Mark:</td>
+        <td><input type="text" id="mark"></td>
+        <button onclick="addMark()">Add Mark</button>
+        <table id="MarkData">
+
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</div>
+<div id="mydata">
+</table>
+&nbsp;
+ 
+<script>
+ src="./assets/"
+        var id = 0;
+        function getData(tagId) {
+            var information = document.getElementById(tagId);
+            return information.innerText;
+        }
+
+        function viewData(id) {
+            alert(getData(id));
+        }
+
+        function addName() {
+            var name = prompt("please enter a name?");
+            if (name !== '' && name != null) {
+                id++;
+                addDataToTable(name, id);
+            }
+        }
+        function addAge(){
+          var age = prompt("please enter age?");
+          if (age !== '' && age != null) {
+            id++;
+            addDataToTable(age, id);
+          } 
+        }
+          function addMark(){
+          var mark = prompt("please enter Mark?");
+          if (mark !== '' && mark != null) {
+            id++;
+            addDataToTable(mark, id);
+          }
+        }
+
+        function addRow() {
+          
+          var name = document.getElementById("name");
+          var age = document.getElementById("age");
+          var mark = document.getElementById("mark");
+          var table = document.getElementById("myTableData");
+       
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+       
+          row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+          row.insertCell(1).innerHTML= name.value;
+          row.insertCell(2).innerHTML= age.value;
+          row.insertcell(3).innerHTML= mark.value;
+       
+      }
+       
+      function deleteRow(obj) {
+            
+          var index = obj.parentNode.parentNode.rowIndex;
+          var table = document.getElementById("myTableData");
+          table.deleteRow(index);
+          
+      }
+       
+      function addTable() {
+            
+          var myTableDiv = document.getElementById("myDynamicTable");
+            
+          var table = document.createElement('Table');
+          table.border='1';
+          
+          var tableBody = document.createElement('TBODY');
+          table.appendChild(tableBody);
+            
+          for (var i=0; i<3; i++){
+             var tr = document.createElement('tr');
+             tableBody.appendChild(tr);
+             
+             for (var j=0; j<4; j++){
+                 var td = document.createElement('td');
+                 td.width='75';
+                 td.appendChild(document.createTextNode("Cell " + i + "," + j));
+                 tr.appendChild(td);
+             }
+          }
+          myTableDiv.appendChild(table);
+          var recordAction = document.createElement('td');
+            var button = document.createElement('button');
+            button.innerText = 'View Data';
+            button.addEventListener('click', function handleClick(event) {
+                viewData(recordId);
+            });
+        }
+
+        
+
+
+        
+        function addDataToTable(name, recordId) {
+            var table = document.getElementById('nameData');
+            var tableRow = document.createElement('tr');
+            var recordData = document.createElement('td');
+            recordData.id = id;
+            recordData.innerHTML = name;
+            tableRow.appendChild(recordData);
+            var recordAction = document.createElement('td');
+            var button = document.createElement('button');
+            button.innerText = 'View Data';
+            button.addEventListener('click', function handleClick(event) {
+                viewData(recordId);
+            });
+
+            
+        }
+        
+    </script>
+</body>
+
+
+</html>
